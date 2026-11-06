@@ -1,0 +1,273 @@
+/* BioCraftEd apex portal — Win98 chrome + logo palette + Nine By Five headings.
+   Bevel language from games.biocrafted.xyz/style.css.
+   Colours from BioCraftEd logo PNG. Studio title (h1): Press Start 2P (OFL).
+   Body / subtitle / supporting copy: Nine By Five NBP (Nate Halley, CC BY-SA 3.0).
+   Tiny Win98 chrome (buttons, badges, platform chips): Press Start 2P. */
+@font-face{
+  font-family:'Nine By Five NBP';
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+  src:url(fonts/NineByFiveNBP.woff2) format('woff2'),
+      url(fonts/NineByFiveNBP.woff) format('woff'),
+      url(fonts/NineByFiveNBP.ttf) format('truetype');
+}
+@font-face{
+  font-family:'Press Start 2P';
+  font-weight:400;
+  font-display:swap;
+  src:url(fonts/PressStart2P-Regular.woff2) format('woff2');
+}
+:root{
+  --teal:#3b948a;
+  --teal-vivid:#2ca596;
+  --teal-light:#63ceb2;
+  --teal-deep:#245b54;
+  --leaf:#70a446;
+  --leaf-hi:#84ab40;
+  --leaf-deep:#3b6c53;
+  --ed-blue:#3a7ad6;
+  --cream:#f6e9c9;
+  --sand:#e4d5a9;
+  --clay:#d99e6a;
+  --earth:#603b2c;
+  --ink:#2f1e1a;
+  --sea:#0b3a50;
+  --face:var(--cream);
+  --lt:#fff8e8;
+  --hi:#fffdf6;
+  --sh:#a8926a;
+  --dk:var(--ink);
+  --link:var(--teal-deep);
+  --navy:#000080;
+  --title:'Press Start 2P', monospace;
+  --bodyfont:'Nine By Five NBP', Tahoma, 'MS Sans Serif', sans-serif;
+  --pixel:'Press Start 2P', monospace;
+}
+*{box-sizing:border-box}
+html{font-synthesis:none;scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--bodyfont);
+  color:var(--ink);
+  background:var(--sea);
+  line-height:1.55;
+  font-size:23px;
+}
+.sky{
+  position:fixed;inset:0;z-index:-2;
+  background:linear-gradient(to bottom,#182a4d 0%,#2f2c5e 13%,#553466 25%,#863f67 36%,#b85567 45%,#dd6f4f 52%,#f5994b 57%,#ffc66c 60%,#1a5a72 60%,#0b3a50 100%);
+}
+#reefbg{
+  position:fixed;inset:0;width:100%;height:100%;z-index:-1;display:block;
+  image-rendering:pixelated;image-rendering:crisp-edges;
+  opacity:0;transition:opacity .8s;pointer-events:none;
+}
+#reefbg.on{opacity:1}
+@media (prefers-reduced-motion:reduce){
+  #reefbg{transition:none}
+  .door:hover,.door:focus-within{transform:none}
+}
+
+.skip{
+  position:absolute;left:-999px;top:0;z-index:2000;
+  background:var(--face);color:var(--ink);padding:6px 10px;
+  border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
+}
+.skip:focus{left:8px;top:8px}
+
+.wrap{max-width:980px;margin:14px auto 24px;padding:0 10px}
+a{color:var(--link);font-weight:600}
+a:hover{color:var(--teal-vivid)}
+a:focus-visible,.btn:focus-visible,.door:focus-visible{
+  outline:2px dotted #000;outline-offset:3px;
+}
+
+.bevel,.win,.foot,.about,.jam-strip{
+
+  background:var(--face);
+  border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
+  box-shadow:inset 1px 1px 0 var(--lt), 2px 2px 0 rgba(0,0,0,.35);
+}
+
+/* centred stacked hero */
+.hero{
+  text-align:center;
+  padding:18px 16px 20px;
+  margin-bottom:12px;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+.hero.bevel{
+  /* keep class for markup; force no chrome so reef shows through */
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+.hero .logo{
+  image-rendering:pixelated;
+  image-rendering:crisp-edges;
+  width:min(140px,38vw);height:auto;
+  margin:0 auto 14px;
+  border:0;
+  background:transparent;
+  display:block;
+}
+.hero h1.studio-title{
+  font-family:var(--title);
+  font-size:clamp(16px,3.4vw,24px);
+  font-weight:400;
+  margin:0;
+  letter-spacing:0.04em;
+  line-height:1.7;
+  color:var(--cream);
+  /* dark outline for reef contrast — all letters */
+  -webkit-text-stroke:2px var(--ink);
+  paint-order:stroke fill;
+  text-shadow:
+    -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink), 2px 2px 0 var(--ink),
+    -2px 0 0 var(--ink), 2px 0 0 var(--ink), 0 -2px 0 var(--ink), 0 2px 0 var(--ink);
+}
+.hero h1.studio-title .t-bio{color:var(--leaf-hi); /* Bio green */}
+.hero h1.studio-title .t-craft{color:var(--cream); /* Craft cream/white */}
+.hero h1.studio-title .t-ed{color:var(--ed-blue); /* Ed blue — clear blue, not teal */}
+.hero h1.studio-title .t-studios{color:var(--cream); /* Studios cream/white */}
+@supports not (-webkit-text-stroke:1px black){
+  .hero h1.studio-title{-webkit-text-stroke:0}
+}
+@media (max-width:420px){
+  .hero h1.studio-title{font-size:clamp(14px,5.2vw,18px);line-height:1.75}
+}
+.hero .sub{
+  margin:12px auto 0;
+  max-width:30rem;
+  font-family:var(--bodyfont);
+  font-size:clamp(20px,3vw,24px);
+  font-weight:400;
+  color:var(--earth);
+  line-height:1.45;
+}
+.platforms{
+  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px;
+}
+.plat{
+  font-family:var(--pixel);font-size:10px;line-height:1.7;
+  padding:6px 10px;color:#fffdf6;
+  border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
+}
+.plat.web{background:linear-gradient(var(--teal-light),var(--teal-deep))}
+.plat.phone{background:linear-gradient(var(--leaf-hi),var(--leaf-deep))}
+.plat.vr{background:linear-gradient(#7ec8ff,var(--teal-deep))}
+.hero-actions{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;
+}
+
+
+.invite{
+  text-align:center;margin:4px 0 14px;
+  font-family:var(--bodyfont);font-size:clamp(22px,3.5vw,28px);
+  color:#fff8e0;text-shadow:2px 2px 0 rgba(0,0,0,.45);line-height:1.3;
+}
+.invite span{background:rgba(36,91,84,.82);padding:6px 14px;border:2px solid var(--clay)}
+
+.doors{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 16px;
+}
+@media (max-width:720px){.doors{grid-template-columns:1fr}}
+
+.door{
+  display:flex;flex-direction:column;min-height:100%;text-decoration:none;color:inherit;
+  transition:transform .12s ease;position:relative;
+}
+.door:hover,.door:focus-within{transform:translate(-2px,-2px)}
+.door .win{flex:1;display:flex;flex-direction:column;min-height:100%}
+.door-lab .wtitle{background:linear-gradient(90deg,var(--leaf-deep),var(--leaf-hi))}
+.door-games .wtitle{background:linear-gradient(90deg,var(--teal-deep),var(--teal-vivid))}
+.door-lab .win{
+  background:linear-gradient(165deg,#eef8e4 0%,var(--cream) 42%,#f3ecd0 100%);
+  box-shadow:inset 1px 1px 0 var(--lt), 3px 3px 0 rgba(59,108,83,.45);
+}
+.door-games .win{
+  background:linear-gradient(165deg,#e4f7f4 0%,var(--cream) 42%,#efe6c8 100%);
+  box-shadow:inset 1px 1px 0 var(--lt), 3px 3px 0 rgba(36,91,84,.45);
+}
+.door-lab:hover .win,.door-lab:focus-within .win{outline:2px solid var(--leaf)}
+.door-games:hover .win,.door-games:focus-within .win{outline:2px solid var(--teal-vivid)}
+
+.wtitle{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:5px 4px 5px 8px;color:#fffdf6;
+  font:10px var(--pixel);line-height:1.7;user-select:none;
+}
+.wtitle .ti{display:flex;align-items:center;gap:6px;min-width:0}
+.wtitle img{width:16px;height:16px;image-rendering:pixelated}
+.wbadge{
+  font:8px var(--pixel);padding:4px 7px;background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.35);line-height:1.7;white-space:nowrap;
+}
+.wbody{padding:14px 14px 16px;flex:1;display:flex;flex-direction:column}
+.wbody h2{
+  font-family:var(--bodyfont);font-size:clamp(26px,3.8vw,32px);font-weight:400;
+  margin:0 0 10px;line-height:1.25;color:var(--ink);
+}
+.hook{
+  margin:0 0 10px;font-size:22px;font-weight:400;color:var(--teal-deep);line-height:1.4;
+}
+.door-lab .hook{color:var(--leaf-deep)}
+.wbody p{margin:0 0 10px;font-size:22px;color:#3a2a22;line-height:1.5}
+.wbody ul{margin:0 0 14px;padding-left:1.15rem;font-size:22px;color:#2a1c16;line-height:1.5}
+.wbody li{margin:0 0 5px}
+.door-go{
+  margin-top:auto;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--pixel);font-size:11px;line-height:1.7;
+  padding:12px 14px;width:100%;justify-content:center;
+  border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);color:#fffdf6;
+}
+.door-lab .door-go{background:linear-gradient(var(--leaf-hi),var(--leaf-deep))}
+.door-games .door-go{background:linear-gradient(var(--teal-light),var(--teal-deep))}
+.door:hover .door-go,.door:focus-within .door-go{filter:brightness(1.08)}
+.door:active .door-go{border-color:var(--dk) var(--hi) var(--hi) var(--dk)}
+
+.btn{
+  display:inline-block;font-family:var(--pixel);font-size:10px;text-decoration:none;
+  padding:10px 14px;border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
+  color:#fffdf6;line-height:1.7;
+}
+.btn.play{background:linear-gradient(var(--leaf-hi),var(--leaf-deep))}
+.btn.dl{background:linear-gradient(var(--teal-vivid),var(--teal-deep))}
+.btn.luma{background:linear-gradient(var(--clay),var(--earth));text-shadow:1px 1px 0 #201713}
+.btn.plain{background:linear-gradient(#fffdf6,var(--sand));color:var(--ink)}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{border-color:var(--dk) var(--hi) var(--hi) var(--dk)}
+
+.jam-strip{
+
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+  padding:10px 12px;margin:8px 0 16px;
+  background:linear-gradient(90deg,rgba(246,233,201,.92),rgba(217,158,106,.55));
+  font-size:20px;
+}
+.jam-strip strong{font-family:var(--bodyfont);font-size:24px;font-weight:400;line-height:1.25;color:var(--earth)}
+.jam-strip p{margin:2px 0 0;color:#3a2a22;font-size:20px;line-height:1.45}
+.jam-strip .wactions{display:flex;flex-wrap:wrap;gap:8px}
+
+.about{padding:14px 16px;margin:14px 0}
+.about h2{font-family:var(--bodyfont);font-size:26px;font-weight:400;margin:0 0 8px;line-height:1.25;color:var(--teal-deep)}
+.about p{margin:0 0 8px;font-size:22px;line-height:1.5}
+.contact-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.contact-list span{display:block;color:#5a4030;font-size:18px;font-weight:400;line-height:1.45}
+
+.foot{
+  margin:16px 0 8px;padding:10px 12px;
+  background:rgba(246,233,201,.92);font-size:18px;color:#3a2a22;line-height:1.5;
+}
+.foot .socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.legal{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0;font-size:16px}
+.legal a{font-weight:600}
+
+@media (max-width:560px){
+  .jam-strip{flex-direction:column;align-items:stretch}
+  .hero .sub{padding:0 4px}
+  .wbody p,.wbody ul,.about p{overflow-wrap:anywhere}
+}

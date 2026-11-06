@@ -1,0 +1,3 @@
+Source: https://games.biocrafted.xyz/assets/reef/ (hub/assets/reef in Mark1wan/games.biocrafted.xyz)
+Files: reef-atlas.webp, reef.js
+Credit: Coral Reef by Luke (BioCraftEd) — living wallpaper used as the games hub background.
